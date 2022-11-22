@@ -15,7 +15,7 @@ public class Task_3 {
 		System.out.print("Введите знак операции (+, -, /, *, ^, %): ");
 
 		char operationSign = scan.next().charAt(0);
-
+		scan.close();
 		switch (operationSign) {
 			case '+':
 				resultOperation = firstNumber + secondNumber;
@@ -47,7 +47,10 @@ public class Task_3 {
 			default:
 				System.out.printf("Вы ввели неверный знак операции");
 				return;
+				
 		}
+
 		System.out.println(firstNumber + " " + operationSign + " " + secondNumber + " = " + resultOperation);
+
 	}
 }

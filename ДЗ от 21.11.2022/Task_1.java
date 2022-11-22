@@ -10,7 +10,7 @@ public class Task_1 {
             System.out.print(i + " * ");
             multi *= i;
         }
-
+		scan.close();
         System.out.print(" = " + multi);
     }
 }
