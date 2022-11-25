@@ -4,9 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Task_6 {
-    private static Logger Logger = java.util.logging.Logger.getLogger(Task_6.class.getName());
 
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
@@ -37,14 +39,21 @@ public class Task_6 {
                 arr[i] = input.nextInt();
             }
 
-            bubbleMethod(arr, arr.length);
-            System.out.println();
-            System.out.println("=============Вывод в лог=============");
-            Logger.log(Level.INFO, Arrays.toString(arr));
             System.out.println();
             System.out.println("=============Вывод в консоль=============");
             System.out.println(Arrays.toString(arr));
             System.out.println();
+            System.out.println("======Логируем в файл log.txt======");
+            Path path = Paths.get("log.txt");
+            try {
+                String str = Arrays.toString(arr);
+                byte[] bs = str.getBytes();
+                Path writtenFilePath = Files.write(path, bs);
+                System.out.println("Содержимое записанно в файл:\n" + new String(Files.readAllBytes(writtenFilePath)));
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println();
+            }
         }
     }
 }

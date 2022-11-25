@@ -3,6 +3,9 @@
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 class Task_7 {
     private static Logger Logger = java.util.logging.Logger.getLogger(Task_7.class.getName());
@@ -37,11 +40,8 @@ class Task_7 {
                 break;
 
             case '/':
-                try {
-                    resultOperation = firstNumber / secondNumber;
-                } catch (Exception e) {
-                    System.out.println("На ноль делить нельзя");
-                }
+                resultOperation = firstNumber / secondNumber;
+                break;
 
             case '%':
                 resultOperation = firstNumber % secondNumber;
@@ -60,7 +60,19 @@ class Task_7 {
 
         }
         System.out.println();
+        System.out.println("======Логируем в файл log.txt======");
+        Path path = Paths.get("log.txt");
+		try {
+			String str = firstNumber + " " + operationSign + " " + secondNumber + " = " + resultOperation;
+			byte[] bs = str.getBytes();
+			Path writtenFilePath = Files.write(path, bs);
+			System.out.println("Записанно содержимое в файл:\n"+ new String(Files.readAllBytes(writtenFilePath)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+        System.out.println();
+        System.out.println("======Логируем в консоль======");
         Logger.log(Level.INFO, firstNumber + " " + operationSign + " " + secondNumber + " = " + resultOperation);
 
     }
