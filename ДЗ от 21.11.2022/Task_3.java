@@ -35,7 +35,7 @@ public class Task_3 {
 			case '/':
 				try {
 					resultOperation = firstNumber / secondNumber;
-				} catch (ArithmeticException e) {
+				} catch (Exception e) {
 					System.out.println("На ноль делить нельзя");
 				}
 
