@@ -7,23 +7,35 @@ StringBuilder. Данные для фильтрации приведены ни�
 ... where name = Ivanov and country = Russia and city = Moscow
 */
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Task_5 {
+    public static void main(String[] args) {
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("name", "Ivanov");
+        map.put("country", "Russia");
+        map.put("city", "Moscow");
+        map.put("age", null);
 
-    public static StringBuilder getCondition(Map<String, String> params) {
-      StringBuilder stringBuilder = new StringBuilder();
-      for (Map.Entry<String, String> entry : params.entrySet()) {
-        if (entry.getValue() != null) {
-          if (stringBuilder.toString().equals("")) {
-            stringBuilder.append(entry.getKey()).append(" = '").append(entry.getValue()).append("'");
-          } else {
-            stringBuilder.append(" and ").append(entry.getKey()).append(" = '")
-                .append(entry.getValue()).append("'");
-          }
-        }
-  
-      }
-      return stringBuilder;
+        System.out.println(getQuery(map));
     }
-  }
+
+    public static String getQuery(Map<String, String> params) {
+        StringBuilder value = new StringBuilder();
+        if (params == null || params.isEmpty())
+            return value.toString();
+
+        for (Map.Entry<String, String> two : params.entrySet()) {
+            if (two.getKey() == null || two.getValue() == null)
+                continue;
+
+            value.append(two.getKey()).append(" = '").append(two.getValue()).append("' and ");
+        }
+
+        if (value.length() > 5)
+            value.delete(value.length() - 5, value.length());
+
+        return value.toString();
+    }
+}
