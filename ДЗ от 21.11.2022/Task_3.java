@@ -33,10 +33,11 @@ public class Task_3 {
 				break;
 
 			case '/':
-				try {
-					resultOperation = firstNumber / secondNumber;
-				} catch (Exception e) {
+				resultOperation = firstNumber / secondNumber;
+				if (secondNumber == 0) {
 					System.out.println("На ноль делить нельзя");
+				} else {
+					break;
 				}
 
 			case '%':

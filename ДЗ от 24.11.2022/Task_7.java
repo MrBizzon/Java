@@ -41,7 +41,19 @@ class Task_7 {
 
             case '/':
                 resultOperation = firstNumber / secondNumber;
-                break;
+                if (secondNumber == 0) {
+                    Path path = Paths.get("error.txt");
+                    try {
+                        String str = "Произошла ошибка: на ноль делить нельзя!";
+                        byte[] bs = str.getBytes();
+                        Path writtenFilePath = Files.write(path, bs);
+                        System.out.println(new String(Files.readAllBytes(writtenFilePath)));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    };
+                } else {
+                    break;
+                }
 
             case '%':
                 resultOperation = firstNumber % secondNumber;
@@ -62,14 +74,14 @@ class Task_7 {
         System.out.println();
         System.out.println("======Логируем в файл log.txt======");
         Path path = Paths.get("log.txt");
-		try {
-			String str = firstNumber + " " + operationSign + " " + secondNumber + " = " + resultOperation;
-			byte[] bs = str.getBytes();
-			Path writtenFilePath = Files.write(path, bs);
-			System.out.println("Записанно содержимое в файл:\n"+ new String(Files.readAllBytes(writtenFilePath)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            String str = firstNumber + " " + operationSign + " " + secondNumber + " = " + resultOperation;
+            byte[] bs = str.getBytes();
+            Path writtenFilePath = Files.write(path, bs);
+            System.out.println("Записанно содержимое в файл:\n" + new String(Files.readAllBytes(writtenFilePath)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         System.out.println();
         System.out.println("======Логируем в консоль======");
