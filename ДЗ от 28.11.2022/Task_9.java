@@ -29,6 +29,7 @@ public class Task_9 {
                 i++;
             }
         }
+
         System.out.printf("Список с нечетными числами: %s", arrList);
     }
 }
