@@ -1,63 +1,59 @@
 // Написать метод, который принимает массив элементов, помещает их в очередь и выводит 
 // на консоль содержимое очереди
 
-class Queue {
+class Task_13_2 {
     private int[] queue;
-    private int maxSize;
-    private int nElem;
-    private int front;
-    private int rear;
+    private int maximumQuantity;
+    private int anotherElement;
+    private int frontPart;
+    private int backPart;
 
-    public Queue(int maxSize) {
-        this.maxSize = maxSize;
-        queue = new int[maxSize];
-        rear = -1;
-        front = 0;
-        nElem = 0;
+    public Task_13_2(int maximumQuantity) {
+        this.maximumQuantity = maximumQuantity;
+        queue = new int[maximumQuantity];
+        backPart = -1;
+        frontPart = 0;
+        anotherElement = 0;
     }
 
     public void insert(int elem) {
-        if (rear == maxSize - 1) {
-            rear = -1;
+        if (backPart == maximumQuantity - 1) {
+            backPart = -1;
         }
 
-        queue[++rear] = elem;
-        nElem++;
+        queue[++backPart] = elem;
+        anotherElement++;
     }
 
     public int remove() {
-        int temp = queue[front++];
+        int temp = queue[frontPart++];
 
-        if (front == maxSize) {
-            front = 0;
+        if (frontPart == maximumQuantity) {
+            frontPart = 0;
         }
-        nElem--;
+        anotherElement--;
         return temp;
 
     }
 
     public boolean isEmpty() {
-        return (nElem == 0);
+        return (anotherElement == 0);
     }
 
-    public class MyQueue {
+    public static void main(String[] args) {
+        test_2 myQueue = new test_2(5);
 
-        public static void main(String[] args) {
-            Queue myQueue = new Queue(5);
+        myQueue.insert(1);
+        myQueue.insert(2);
+        myQueue.insert(3);
+        myQueue.insert(4);
+        myQueue.insert(5);
 
-            myQueue.insert(1);
-            myQueue.insert(2);
-            myQueue.insert(3);
-            myQueue.insert(4);
-            myQueue.insert(5);
-
-            while (!myQueue.isEmpty()) {
-                int n = myQueue.remove();
-                System.out.println("Элемент: " + n);
-            }
-
+        while (!myQueue.isEmpty()) {
+            int n = myQueue.remove();
+            System.out.println("Элемент: " + n);
         }
 
     }
-}
 
+}
