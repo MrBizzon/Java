@@ -29,8 +29,8 @@ public class Calculator extends JFrame implements WindowListener, ActionListener
     private JButton Change = new JButton("+/-");
     private JButton sq = new JButton("sqrt");
     private String text = "";
-    private int a = 0;
-    private int b = 0;
+    private double a = 0;
+    private double b = 0;
     private char z;
     private int l = 65;
     private int m = 65;

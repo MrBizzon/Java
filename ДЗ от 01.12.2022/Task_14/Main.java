@@ -4,7 +4,7 @@ package Task_14;
 
 public class Main {
     public static void main(String[] args) {
-        Calculator w = new Calculator();
+        Calculator cal = new Calculator();
     }
 
 }
