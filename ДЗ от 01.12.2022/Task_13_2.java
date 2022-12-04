@@ -41,7 +41,7 @@ class Task_13_2 {
     }
 
     public static void main(String[] args) {
-        test_2 myQueue = new test_2(5);
+        Task_13_2 myQueue = new Task_13_2(5);
 
         myQueue.insert(1);
         myQueue.insert(2);
