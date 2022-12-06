@@ -1,11 +1,22 @@
+import java.util.Scanner;
+
 public class Task_17 {
     public static void main(String args[]) {
-        int[] arr = { 4, 8, 8, 5, 5, 89, 9, 87 };
 
-        heapSort(arr);
-        System.out.print("Пирамидальная сортировка: ");
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+        try (Scanner input = new Scanner(System.in)) {
+            System.out.print("Введите размер массива: ");
+            int size = input.nextInt();
+            int arr[] = new int[size];
+            System.out.println("Введите построчно числа: ");
+            for (int i = 0; i < size; i++) {
+                arr[i] = input.nextInt();
+            }
+
+            heapSort(arr);
+            System.out.print("Пирамидальная сортировка: ");
+            for (int i = 0; i < arr.length; i++)
+                System.out.print(arr[i] + " ");
+        }
     }
 
     private static void heapSort(int[] arr) {
@@ -23,21 +34,21 @@ public class Task_17 {
     }
 
     private static void heapify(int[] arr, int i, int n) {
-        int l = i * 2 + 1;
-        int r = i * 2 + 2;
-        int largest = i;
+        int a = i * 2 + 1;
+        int b = i * 2 + 2;
+        int max = i;
 
-        if (l < n && arr[l] > arr[largest])
-            largest = l;
-        if (r < n && arr[r] > arr[largest])
-            largest = r;
+        if (a < n && arr[a] > arr[max])
+            max = a;
+        if (b < n && arr[b] > arr[max])
+            max = b;
 
-        if (i != largest) {
+        if (i != max) {
             int temp = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = temp;
+            arr[i] = arr[max];
+            arr[max] = temp;
 
-            heapify(arr, largest, n);
+            heapify(arr, max, n);
         }
     }
 }
