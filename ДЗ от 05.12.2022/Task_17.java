@@ -1,3 +1,5 @@
+// Реализовать алгоритм пирамидальной сортировки (HeapSort).
+
 import java.util.Scanner;
 
 public class Task_17 {
