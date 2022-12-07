@@ -20,7 +20,7 @@ public class Task_16 {
                 nameList.replace(registryName[i], nameList.get(registryName[i]) + 1);
             } else {
                 nameList.put(registryName[i], 1);
-            }
+            }   
         }
         System.out.println(nameList);
         Map<String, Integer> sortedRegistryName = new LinkedHashMap<>();
