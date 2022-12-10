@@ -204,62 +204,62 @@ public class Task_18 {
                 + operatingSystem + ", монитор: " + display + ", масса: " + weight + ", цвет: " + color + ", стоимость: " + price;
     }
 
-    public static boolean selectionByFilter(Task_18 laptop, Map<String, String> deviceMap) {
+    public static boolean selectionByFilter(Task_18 device, Map<String, String> deviceMap) {
         Boolean result = false;
         Integer count = 0;
         for (String key : deviceMap.keySet()) {
             if (key.equals("1")) {
-                if (deviceMap.get("1").equals(laptop.stamp)) {
+                if (deviceMap.get("1").equals(device.stamp)) {
                     count += 1;
                 }
             }
             if (key.equals("2")) {
                 int integerValue = Integer.parseInt(deviceMap.get("2"));
-                if (integerValue <= laptop.deviceMemory) {
+                if (integerValue <= device.deviceMemory) {
                     count += 1;
                 }
             }
             if (key.equals("3")) {
                 int integerValue = Integer.parseInt(deviceMap.get("3"));
-                if (integerValue <= laptop.hardDriveDisk) {
+                if (integerValue <= device.hardDriveDisk) {
                     count += 1;
                 }
             }
             if (key.equals("4")) {
-                if (deviceMap.get("4").equals(laptop.processor)) {
+                if (deviceMap.get("4").equals(device.processor)) {
                     count += 1;
                 }
             }
             if (key.equals("5")) {
-                if (deviceMap.get("5").equals(laptop.graphicAdapter)) {
+                if (deviceMap.get("5").equals(device.graphicAdapter)) {
                     count += 1;
                 }
             }
             if (key.equals("6")) {
-                if (deviceMap.get("6").equals(laptop.operatingSystem)) {
+                if (deviceMap.get("6").equals(device.operatingSystem)) {
                     count += 1;
                 }
             }
             if (key.equals("7")) {
                 int integerValue = Integer.parseInt(deviceMap.get("7"));
-                if (integerValue <= laptop.display) {
+                if (integerValue <= device.display) {
                     count += 1;
                 }
             }
             if (key.equals("8")) {
                 double fractionalValue = Double.parseDouble(deviceMap.get("8"));
-                if (fractionalValue <= laptop.weight) {
+                if (fractionalValue <= device.weight) {
                     count += 1;
                 }
             }
             if (key.equals("9")) {
-                if (deviceMap.get("9").equals(laptop.color)) {
+                if (deviceMap.get("9").equals(device.color)) {
                     count += 1;
                 }
             }
             if (key.equals("10")) {
                 int integerValue = Integer.parseInt(deviceMap.get("10"));
-                if (integerValue <= laptop.price) {
+                if (integerValue <= device.price) {
                     count += 1;
                 }
             }
@@ -271,11 +271,11 @@ public class Task_18 {
     }
 
     public static void main(String[] args) {
-        Set<Task_18> laptopSet = lotsOfLaptops();
+        Set<Task_18> deviceCharacteristics = lotsOfLaptops();
         Map<String, String> deviceMap = enterFilter();
-        for (Task_18 laptop : laptopSet) {
-            if (selectionByFilter(laptop, deviceMap)) {
-                System.out.println(laptop);
+        for (Task_18 device : deviceCharacteristics) {
+            if (selectionByFilter(device, deviceMap)) {
+                System.out.println(device);
             }
         }
     }
